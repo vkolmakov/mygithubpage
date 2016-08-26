@@ -20,7 +20,7 @@
     data() {
       return {
         name: 'Vladimir Kolmakov',
-        captionText: 'programming',
+        captionText: '',
         initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'node'],
         finalChoice: 'building stuff.'
       }
@@ -41,6 +41,10 @@
             reject(err)
           }
         })
+      },
+
+      clearCaption() {
+        this.$set(this.$data, 'captionText', '')
       },
 
       changeCaptionOverTime(timeToCaption) {
@@ -94,8 +98,7 @@
           caption = choices[Math.floor(Math.random() * choices.length)]
         }
 
-
-        this.$set(this.$data, 'captionText', '')
+        this.clearCaption()
 
         const timePerChar = caption.length > 8 ? 80 : Math.floor(Math.random() * 50) + 100
         const timeTypingCaption = timePerChar * caption.length
@@ -119,11 +122,17 @@
 
 <style lang="sass" scoped>
   .home {
+    $text-color: #333;
+    $github-color: #5d297e;
+    $twitter-color: #6faedc;
+    $linkedin-color: #006699;
+    $heart-color: #ff505c;
+
     margin: 0 auto;
     max-width: 50em;
 
     font-family: "Raleway", sans-serif;
-    color: #333;
+    color: $text-color;
 
     line-height: 1.5;
     padding: 4em 1em;
@@ -136,7 +145,7 @@
     .links {
       text-align: center;
       a {
-        color: #333;
+        color: $text-color;
         text-decoration: none;
       }
   }
@@ -157,16 +166,16 @@
     }
 
     .fa-github {
-      color: #5d297e;
+      color: $github-color;
     }
     .fa-twitter {
-      color: #6faedc;
+      color: $twitter-color;
     }
     .fa-linkedin {
-      color: #006699;
+      color: $linkedin-color;
     }
     .fa-heart {
-      color: #ff505c;
+      color: $heart-color;
     }
 
     .icons {
