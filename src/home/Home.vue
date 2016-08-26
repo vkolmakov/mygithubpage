@@ -1,8 +1,17 @@
 <template>
   <div class="home">
     <h1>{{ name }}</h1>
-    <h2>I <i class="fa fa-heart" aria-hidden="true"></i> <span class="typed">{{ captionText }}</span></h2>
-    resume -> linkedin -> twitter -> github
+
+    <h2>I <i class="fa fa-heart" aria-hidden="true"></i> <span class="typed">{{ captionText }}</span><span class="cursor">|</span></h2>
+
+    <div class="icons">
+      <a href="https://github.com/vkolmakov"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      <a href="http://twitter.com/vklmkv"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+      <a href=""><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <div class="links">
+      <router-link to="/resume">resume</router-link>
+    </div>
   </div>
 </template>
 
@@ -12,7 +21,7 @@
       return {
         name: 'Vladimir Kolmakov',
         captionText: 'programming',
-        initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react'],
+        initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'node'],
         finalChoice: 'building stuff.'
       }
     },
@@ -108,6 +117,66 @@
   }
 </script>
 
-<style>
+<style lang="sass" scoped>
+  .home {
+    margin: 0 auto;
+    max-width: 50em;
 
+    font-family: "Raleway", sans-serif;
+    color: #333;
+
+    line-height: 1.5;
+    padding: 4em 1em;
+
+    h1, h2 {
+      margin: 1em 0;
+      text-align: center;
+    }
+
+    .links {
+      text-align: center;
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+  }
+
+    .cursor {
+      opacity: 1;
+      font-size: 0.9em;
+      $animation-duration: 0.65s;
+      animation: blink $animation-duration infinite;
+      -webkit-animation: blink $animation-duration infinite;
+      -moz-animation: blink $animation-duration infinite;
+
+      @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+    }
+
+    .fa-github {
+      color: #5d297e;
+    }
+    .fa-twitter {
+      color: #6faedc;
+    }
+    .fa-linkedin {
+      color: #006699;
+    }
+    .fa-heart {
+      color: #ff505c;
+    }
+
+    .icons {
+      margin: 0 auto;
+      text-align: center;
+      i.fa {
+        margin: 0.5em;
+      }
+    }
+
+
+  }
 </style>
