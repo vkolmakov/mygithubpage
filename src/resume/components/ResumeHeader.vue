@@ -20,26 +20,67 @@
 </script>
 
 <style lang="sass">
+  @import "../mixins";
+
   $github-color: #800080;
   $twitter-color: #6faedc;
 
+  @mixin contacts-li-md() {
+    &:nth-child(odd), &:nth-child(even) {
+      padding: 0em 0.3em;
+      width: inherit;
+      margin: 0em;
+    }
+  }
+
+  @mixin contacts-ul-md() {
+    float: right;
+  }
+
+  @media print {
+    div.header > ul {
+      @include contacts-ul-md();
+      li {
+        @include contacts-li-md();
+      }
+
+    }
+  }
+
   .header {
-    clear: both;
-    overflow: hidden;
+    @include clearfix();
+    @include container();
+
     h1 {
       margin: 0em;
     }
 
     ul {
-      float: right;
-
       list-style-type: none;
       padding: 0em;
       margin: 0em;
+
+      @include breakpoint-md() {
+        @include contacts-ul-md();
+      }
+
       li {
         display: inline;
-        padding: 0em 0.3em;
+        float: left;
         margin: 0em;
+
+        &:nth-child(odd) {
+          @include left-col();
+        }
+
+        &:nth-child(even) {
+          @include right-col();
+        }
+
+        @include breakpoint-md() {
+          @include contacts-li-md();
+        }
+
       }
     }
   }

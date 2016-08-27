@@ -27,25 +27,7 @@
 </script>
 
 <style lang="sass">
-  @import "~susy/sass/susy";
-
-  @mixin left-col($is-last: false) {
-    @if $is-last == true {
-      @include span(12 of 12 last);
-    } @else {
-      @include span(6 of 12);
-    }
-  }
-
-  @mixin right-col() {
-    @include span(6 of 12 last)
-    text-align: right;
-  }
-
-  @mixin clearfix() {
-    overflow: hidden;
-    clear: both;
-  }
+  @import "../mixins";
 
   .experience {
     .job {
@@ -64,8 +46,7 @@
 
       ul {
         @include clearfix()
-        margin: 0.5em 0;
-        padding-left: 2.5em;
+        @include bulletpoints();
       }
     }
   }

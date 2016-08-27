@@ -23,17 +23,17 @@
 </script>
 
 <style lang="sass">
+  @import "../mixins";
   .projects {
     .project {
       a {
         text-decoration: underline;
       }
       h3 {
-        margin: 0.25em 0;
+        @include header();
       }
       ul {
-        margin: 0.5em 0;
-        padding-left: 3em;
+        @include bulletpoints();
       }
     }
   }

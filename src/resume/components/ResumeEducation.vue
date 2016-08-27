@@ -21,24 +21,38 @@
 </script>
 
 <style lang="sass">
-  @import "~susy/sass/susy";
+  @import "../mixins";
 
-  @mixin left-col() {
-    @include span(6 of 12)
+  @mixin education-md() {
+    .school-name, .major {
+      margin-left: 0em;
+      @include left-col();
+    }
+    .graduation, .gpa {
+      margin-left: 0em;
+      @include right-col();
+    }
   }
 
-  @mixin right-col() {
-    @include span(6 of 12 last)
-    text-align: right;
+  @media print {
+    div.education {
+      @include education-md();
+    }
   }
 
   .education {
     @include container();
-    .school-name, .major {
-      @include left-col();
+    .school-name {
+      @include left-col(true);
     }
-    .graduation, .gpa {
-      @include right-col();
+
+    .graduation, .major, .gpa {
+      margin-left: 2em;
     }
+
+    @include breakpoint-md() {
+      @include education-md();
+    }
+
   }
 </style>

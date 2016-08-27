@@ -19,10 +19,10 @@
 </script>
 
 <style lang="sass">
+  @import "../mixins";
   .technical-skills {
     ul {
-        margin: 0.5em 0;
-        padding-left: 3em;
+        @include bulletpoints();
       }
   }
 </style>

@@ -136,30 +136,40 @@
 
 <style lang="sass">
   @import "./ComputerModern/cmun-serif.css";
+  @import "./mixins";
+
+  @mixin resume-md() {
+    font-size: 12px;
+  }
 
   @media print {
     div.resume {
-      margin: 0 auto;
+      @include resume-md();
       max-width: 600px;
       padding: 30px 0px;
       border: 0px;
       background: #fff;
       box-shadow: none;
       -webkit-box-shadow: none;
-    }
+      }
   }
 
   .resume {
     margin: 0 auto;
     max-width: 600px;
-    padding: 80px 100px;
+    @include breakpoint-md() {
+      @include resume-md();
+      padding: 80px 100px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 4px #aaa;
+      -webkit-box-shadow: 2px 2px 4px #aaa;
+    }
+
+    padding: 1em;
     background: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 4px #aaa;
-    -webkit-box-shadow: 2px 2px 4px #aaa;
     color: #111;
     font-family: 'Computer Modern Serif';
-    font-size: 12px;
+    font-size: 11px;
 
     a {
       text-decoration: none;
@@ -167,7 +177,7 @@
     }
 
     h1, h2 {
-      margin: 0.25em 0;
+      @include header();
     }
 
   }
