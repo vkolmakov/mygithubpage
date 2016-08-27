@@ -33,6 +33,14 @@
     },
 
     methods: {
+      head(list) {
+        return list[0]
+      },
+
+      getRandomFrom(list) {
+        return list[Math.floor(Math.random() * list.length)]
+      },
+
       delay(fn, time) {
         return new Promise((resolve, reject) => {
           try {
@@ -59,14 +67,14 @@
 
       typeCaption({ caption, time }) {
         const timePerChar = time / caption.length
-        const timeToCaption = caption.split('').map((currentCaption, idx) => ({ time: timePerChar * (idx + 1), currentCaption: caption.substring(0, idx + 1) }))
+        const timeToCaption = caption.split('').map((_, idx) => ({ time: timePerChar * (idx + 1), currentCaption: caption.substring(0, idx + 1) }))
 
         return this.changeCaptionOverTime(timeToCaption)
       },
 
       eraseCaption({ caption, time }) {
         const timePerChar = time / caption.length
-        const timeToCaption = caption.split('').map((char, idx) => ({ time: timePerChar * (idx + 1), currentCaption: caption.substring(0, caption.length - idx - 1) }))
+        const timeToCaption = caption.split('').map((_, idx) => ({ time: timePerChar * (idx + 1), currentCaption: caption.substring(0, caption.length - idx - 1) }))
 
         return this.changeCaptionOverTime(timeToCaption)
       },
@@ -77,7 +85,7 @@
         await this.typeCaption({ caption, time: timeConfig.timeTypingCaption })
         await waitFor(timeConfig.timeBeforeErasingCaption)
 
-        if (caption == this.finalChoice) {
+        if (caption === this.finalChoice) {
           return Promise.resolve()
         }
 
@@ -88,17 +96,15 @@
       },
 
       async updateCaption(remainingCaptions) {
-        let choices
-        let caption
+        const [caption, currentCaptionChoices] = do {
+          const remaining = remainingCaptions.length
+          if (remaining < 1) [null, null]
+          else if (remaining < 2) [this.head(remainingCaptions), [this.finalChoice]]
+          else [this.getRandomFrom(remainingCaptions), remainingCaptions]
+        }
 
-        if (remainingCaptions.length < 1) {
+        if ([caption, currentCaptionChoices].some(elem => elem === null)) {
           return Promise.resolve()
-        } else if (remainingCaptions.length < 2) {
-          choices = [this.finalChoice]
-          caption = remainingCaptions[0]
-        } else {
-          choices = remainingCaptions
-          caption = choices[Math.floor(Math.random() * choices.length)]
         }
 
         this.clearCaption()
@@ -115,9 +121,9 @@
 
         await this.processCaption({ caption, timeConfig })
 
-        const nextRemainingCaptions = choices.filter(c => c != caption)
+        const nextRemainingCaptions = currentCaptionChoices.filter(c => c !== caption)
 
-        this.updateCaption(nextRemainingCaptions)
+        return this.updateCaption(nextRemainingCaptions)
       },
     },
   }
