@@ -118,14 +118,14 @@
             bulletpoints: [
               'Self-service web-application that allows students to register using their school email address and schedule tutoring appointments directly at Math Emporium\'s calendar. Has complete integration with Google Calendar and serves as a configurable backend for the Academic Scheduler Chrome extension.',
               'Backend: Node.js, Express, PostgreSQL; front: React, Redux, Sass (Susy + Compass).',
-              'Source: Github. Link: mathemporium.herokuapp.com.',
+              'Source: <a href="https://github.com/vkolmakov/math-emporium">Github</a> Link: <a href="http://mathemporium.herokuapp.com">mathemporium.herokuapp.com</a>',
             ],
           }, {
             name: 'Academic Scheduler',
             bulletpoints: [
               'Chrome extension that is currently used at Wright College\'s Math Emporium for scheduling appointments. Eliminated any possibility for overbooking/mis-scheduling.',
-              'Built with AngularJSv1.5 and Bootstrap.',
-              'Source: Github.',
+              'Built with AngularJS and Bootstrap.',
+              'Source: <a href="https://github.com/vkolmakov/academic-scheduler-extension">Github</a>',
             ],
           }]
         }
