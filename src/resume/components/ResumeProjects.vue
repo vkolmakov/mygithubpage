@@ -1,15 +1,14 @@
 <template>
   <div class="projects">
-      <h2>Projects</h2>
-      <div class="project" v-for="p in projects">
-          <h3>{{ p.name }}</h3>
-          <ul>
-              <li v-for="bulletpoint in p.bulletpoints">
-                  {{ bulletpoint }}
-              </li>
-          </ul>
-      </div>
-
+    <h2>Projects</h2>
+    <div class="project" v-for="p in projects">
+      <h3>{{ p.name }}</h3>
+      <ul>
+        <li v-for="bulletpoint in p.bulletpoints">
+          {{ bulletpoint }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -23,6 +22,16 @@
   }
 </script>
 
-<style>
-
+<style lang="sass">
+  .projects {
+    .project {
+      h3 {
+        margin: 0.25em 0;
+      }
+      ul {
+        margin: 0.5em 0;
+        padding-left: 3em;
+      }
+    }
+  }
 </style>
