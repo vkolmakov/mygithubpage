@@ -20,7 +20,7 @@
 </script>
 
 <style lang="sass">
-  $github-color: #5d297e;
+  $github-color: #800080;
   $twitter-color: #6faedc;
 
   .header {
@@ -38,7 +38,7 @@
       margin: 0em;
       li {
         display: inline;
-        padding: 0em 0.4em;
+        padding: 0em 0.3em;
         margin: 0em;
       }
     }
