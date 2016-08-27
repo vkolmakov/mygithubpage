@@ -5,9 +5,9 @@
     <h2>I <i class="fa fa-heart" aria-hidden="true"></i> <span class="typed">{{ captionText }}</span><span class="cursor">|</span></h2>
 
     <div class="icons">
-      <a href="https://github.com/vkolmakov"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-      <a href="http://twitter.com/vklmkv"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-      <a href=""><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+      <a :href="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      <a :href="twitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+      <a :href="linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="links">
       <router-link to="/resume">resume</router-link>
@@ -21,8 +21,11 @@
       return {
         name: 'Vladimir Kolmakov',
         captionText: '',
-        initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'node'],
-        finalChoice: 'building stuff.'
+        initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue', 'node', 'coding', 'building stuff'],
+        finalChoice: 'solving problems.',
+        github: 'https://github.com/vkolmakov',
+        twitter: 'http://twitter.com/vklmkv',
+        linkedin: '',
       }
     },
     created () {
