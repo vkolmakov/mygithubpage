@@ -40,7 +40,7 @@
         resumeHeader: {
           whoami: {
             name: 'Vladimir Kolmakov',
-            link: 'vkolmakov.me',
+            link: 'http://vkolmakov.me',
           },
           contacts: [{
             iconClass: 'fa fa-envelope',
@@ -82,9 +82,9 @@
             title: 'Software Engineering Intern',
             dates: 'June 2016 - August 2016',
             bulletpoints: [
-              'Work as a part of Threat Detection Operations team at Cyber Fusion Center on establishing OSX forensics process.',
-              'Build an extensible OSX forensics framework using several opensource tools (Python, Elasticsearch, Scala).',
-              'Contribute to multiple internal projects (Python, AngularJS).'
+              'Work as a part of Threat Detection Operations team at Cyber Fusion Center on establishing Mac OSX forensics process.',
+              'Build an extensible Mac OSX forensics framework using multiple opensource tools.',
+              'Contribute to several internal projects.'
             ],
           }, {
             company: 'Illinois Institute of Technology',
@@ -137,6 +137,18 @@
 <style lang="sass">
   @import "./ComputerModern/cmun-serif.css";
 
+  @media print {
+    div.resume {
+      margin: 0 auto;
+      max-width: 600px;
+      padding: 30px 0px;
+      border: 0px;
+      background: #fff;
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+
   .resume {
     margin: 0 auto;
     max-width: 600px;
@@ -149,10 +161,13 @@
     font-family: 'Computer Modern Serif';
     font-size: 12px;
 
-
     a {
       text-decoration: none;
       color: #111;
+    }
+
+    h1, h2 {
+      margin: 0.25em 0;
     }
 
   }
