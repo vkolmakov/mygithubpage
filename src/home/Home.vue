@@ -6,8 +6,6 @@
 
     <div class="icons">
       <a :href="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-      <a :href="twitter"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
-      <a :href="linkedin"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="links">
       <router-link to="/resume">resume</router-link>
@@ -24,8 +22,6 @@
         initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue', 'node', 'coding', 'building stuff'],
         finalChoice: 'solving problems.',
         github: 'https://github.com/vkolmakov',
-        twitter: 'http://twitter.com/vklmkv',
-        linkedin: '',
       }
     },
     created () {

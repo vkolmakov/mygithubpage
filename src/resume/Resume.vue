@@ -51,10 +51,6 @@
             text: 'vkolmakov',
             link: 'https://github.com/vkolmakov',
           }, {
-            iconClass: 'fa fa-twitter',
-            text: '@vklmkv',
-            link: 'http://twitter.com/vklmkv',
-          }, {
             iconClass: 'fa fa-bookmark',
             text: 'vkolmakov.me',
             link: 'http://vkolmakov.me',
@@ -82,9 +78,9 @@
             title: 'Software Engineering Intern',
             dates: 'June 2016 - August 2016',
             bulletpoints: [
-              'Work as a part of Threat Detection Operations team at Cyber Fusion Center on establishing Mac OSX forensics process.',
-              'Build an extensible Mac OSX forensics framework using multiple opensource tools.',
-              'Contribute to several internal projects.'
+              'Worked as a part of Threat Detection Operations team at Cyber Fusion Center on establishing Mac OSX forensics process.',
+              'Built an extensible Mac OSX forensics framework using multiple opensource tools.',
+              'Contributed to several internal projects.'
             ],
           }, {
             company: 'Illinois Institute of Technology',
@@ -92,8 +88,8 @@
             title: 'Teaching Assistant - Data Structures and Algorithms',
             dates: 'August 2016 - present',
             bulletpoints: [
-              'Lead lab sessions and assist students with their programming assignments.',
-              'Grade student lab assignments.',
+              'Held lab sessions and assisted students with their programming assignments.',
+              'Graded student lab assignments.',
             ],
           }, {
             company: 'Wilbur Wright College',
@@ -101,8 +97,8 @@
             title: 'Mathematics Tutor',
             dates: 'May 2014 - present',
             bulletpoints: [
-              'Design and develop a fully functional web-application that allows students to schedule tutoring appointments online.',
-              'Provide academic assistance to assigned students with various mathematics courses (calculus, statistics), either individually or in groups.',
+              'Designed and developed a fully functional web-application that allows students to schedule tutoring appointments online.',
+              'Provided academic assistance to assigned students with various mathematics courses (calculus, statistics), either individually or in groups.',
             ],
           }],
         },
