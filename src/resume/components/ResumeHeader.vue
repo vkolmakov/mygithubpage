@@ -27,9 +27,9 @@
 
   @mixin contacts-li-md() {
     &:nth-child(odd), &:nth-child(even) {
-      padding: 0em 0.3em;
+      padding: 0 0.3em;
       width: inherit;
-      margin: 0em;
+      margin: 0;
     }
   }
 
@@ -52,13 +52,13 @@
     @include container();
 
     h1 {
-      margin: 0em;
+      margin: 0;
     }
 
     ul {
       list-style-type: none;
-      padding: 0em;
-      margin: 0em;
+      padding: 0;
+      margin: 0;
 
       @include breakpoint-md() {
         @include contacts-ul-md();
@@ -67,7 +67,7 @@
       li {
         display: inline;
         float: left;
-        margin: 0em;
+        margin: 0;
 
         &:nth-child(odd) {
           @include left-col();

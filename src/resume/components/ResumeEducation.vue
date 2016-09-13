@@ -25,11 +25,11 @@
 
   @mixin education-md() {
     .school-name, .major {
-      margin-left: 0em;
+      margin-left: 0;
       @include left-col();
     }
     .graduation, .gpa {
-      margin-left: 0em;
+      margin-left: 0;
       @include right-col();
     }
   }

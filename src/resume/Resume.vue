@@ -142,8 +142,8 @@
     div.resume {
       @include resume-md();
       max-width: 600px;
-      padding: 30px 0px;
-      border: 0px;
+      padding: 30px 0;
+      border: 0;
       background: #fff;
       box-shadow: none;
       -webkit-box-shadow: none;
