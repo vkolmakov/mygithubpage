@@ -9,10 +9,10 @@
     <resume-experience></resume-experience>
     <resume-separator></resume-separator>
 
-    <resume-technical-skills></resume-technical-skills>
+    <resume-projects></resume-projects>
     <resume-separator></resume-separator>
 
-    <resume-projects></resume-projects>
+    <resume-technical-skills></resume-technical-skills>
   </div>
 </template>
 
@@ -66,7 +66,7 @@
             name: 'Illinois Institute of Technology',
             city: 'Chicago, IL',
             major: 'Bachelor of Science: Computer Science',
-            graduation: 'Expected Gratuation: December 2017',
+            graduation: 'Expected Graduation: December 2017',
             gpa: '3.9/4.0',
           }],
         },
@@ -78,7 +78,7 @@
             title: 'Software Engineering Intern',
             dates: 'June 2016 - August 2016',
             bulletpoints: [
-              'Worked as a part of Threat Detection Operations team at Cyber Fusion Center on establishing Mac OSX forensics process.',
+              'Worked with the Threat Detection Operations team at the Cyber Fusion Center on establishing Mac OSX forensics process.',
               'Built an extensible Mac OSX forensics framework using multiple opensource tools.',
               'Contributed to several internal projects.'
             ],
@@ -88,8 +88,8 @@
             title: 'Teaching Assistant - Data Structures and Algorithms',
             dates: 'August 2016 - present',
             bulletpoints: [
-              'Held lab sessions and assisted students with their programming assignments.',
-              'Graded student lab assignments.',
+              'Hosted lab sessions and assisted students with their programming assignments.',
+              'Evaluated student lab assignments.',
             ],
           }, {
             company: 'Wilbur Wright College',
@@ -123,6 +123,13 @@
               'Built with AngularJS and Bootstrap.',
               'Source: <a href="https://github.com/vkolmakov/academic-scheduler-extension">Github</a>',
             ],
+          }, {
+            name: 'Recommender',
+            bulletpoints: [
+              'A recommender system that implements item-centric form of collaborative filtering and can make predictions given either a user or an item.',
+              'Written in Scala with Spark',
+              'Source: <a href="https://github.com/vkolmakov/recommender-system">Github</a>'
+            ]
           }]
         }
       }
