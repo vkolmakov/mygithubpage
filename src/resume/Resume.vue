@@ -36,7 +36,6 @@
 
     data () {
       return {
-        msg: 'Parent message',
         resumeHeader: {
           whoami: {
             name: 'Vladimir Kolmakov',
@@ -114,7 +113,7 @@
             bulletpoints: [
               'Self-service web-application that allows students to register using their school email address and schedule tutoring appointments directly at Math Emporium\'s calendar. Has complete integration with Google Calendar and serves as a configurable backend for the Academic Scheduler Chrome extension.',
               'Backend: Node.js, Express, PostgreSQL; front: React, Redux, Sass (Susy + Compass).',
-              'Source: <a href="https://github.com/vkolmakov/math-emporium">Github</a> Link: <a href="http://mathemporium.herokuapp.com">mathemporium.herokuapp.com</a>',
+              'Source: <a href="https://github.com/vkolmakov/math-emporium">Github</a> Link: <a href="http://tutoringatwright.com">tutoringatwright.com</a>',
             ],
           }, {
             name: 'Academic Scheduler',
@@ -126,7 +125,7 @@
           }, {
             name: 'Recommender',
             bulletpoints: [
-              'A recommender system that implements item-centric form of collaborative filtering and can make predictions given either a user or an item.',
+              'A recommender system that implements item-centric form of collaborative filtering on a data source and can make predictions given either a user or an item.',
               'Written in Scala with Spark',
               'Source: <a href="https://github.com/vkolmakov/recommender-system">Github</a>'
             ]
