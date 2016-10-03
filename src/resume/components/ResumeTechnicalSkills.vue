@@ -4,6 +4,7 @@
     <ul>
       <li><strong>Languages:</strong> {{ languages.join(', ') }}</li>
       <li><strong>Technologies/Frameworks:</strong> {{ technologies.join(', ') }}</li>
+      <li><strong>Tools:</strong> {{ tools.join(', ') }}</li>
     </ul>
   </div>
 </template>

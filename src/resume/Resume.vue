@@ -103,8 +103,9 @@
         },
 
         resumeTechnicalSkills: {
-          languages: ['Python', 'JavaScript/Node.js', 'Java', 'C', 'Scala'],
-          technologies: ['React', 'Redux', 'AngularJS', 'Vue', 'Express', 'Django', 'PostgreSQL', 'MongoDB', 'Elasticsearch', 'Kibana', 'HTML5', 'CSS3', 'Sass', 'Bootstrap', 'jQuery', 'Git', 'zsh', 'IntelliJ', 'Emacs'],
+          languages: ['JavaScript/Node.js', 'Scala', 'Python', 'Java', 'C'],
+          technologies: ['React', 'Redux', 'AngularJS', 'Vue', 'Express', 'Django', 'PostgreSQL', 'MongoDB', 'Elasticsearch', 'Kibana', 'HTML5', 'CSS3', 'Sass', 'Bootstrap', 'jQuery'],
+          tools: ['Git', 'zsh', 'IntelliJ', 'Emacs'],
         },
 
         resumeProjects: {
