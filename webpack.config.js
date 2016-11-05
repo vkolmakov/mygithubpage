@@ -1,58 +1,60 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack') // eslint-disable-line
 
 module.exports = {
   entry: ['babel-polyfill', './src/main.js'],
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'build-[hash:8].js',
   },
-  resolveLoader: {
-    root: path.join(__dirname, 'node_modules'),
+  resolve: {
+    modules: ['node_modules'],
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.vue$/,
-        loader: 'vue'
+        use: ['vue'],
       },
       {
         test: /\.js$/,
-        loader: 'babel',
+        use: ['babel'],
         exclude: /node_modules/,
       },
       {
         test: /\.(png|jpg|gif|svg|ttf|eot|svg|woff)$/,
-        loader: 'file',
-        query: {
-          name: '[name].[ext]?[hash]'
-        }
-      }
-    ]
+        use: [{
+          loader: 'file',
+          options: {
+            name: '[name].[ext]',
+          },
+        }],
+      },
+    ],
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
   },
-  devtool: '#eval-source-map'
+  devtool: 'eval-source-map',
 }
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+  module.exports.devtool = 'source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
-      }
+        NODE_ENV: '"production"',
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
         screw_ie8: true,
-      }
-    })
+      },
+    }),
   ])
 }
