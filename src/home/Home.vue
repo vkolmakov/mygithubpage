@@ -5,7 +5,9 @@
     <h2>I <i class="fa fa-heart" aria-hidden="true"></i> <span class="typed">{{ captionText }}</span><span class="cursor">|</span></h2>
 
     <div class="icons">
-      <a :href="github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+      <a v-for="sm in socialMedia" :href="sm.link">
+        <i :class="sm.iconClass" aria-hidden="true"></i>
+      </a>
     </div>
     <div class="links">
       <router-link to="/resume">resume</router-link>
@@ -21,7 +23,10 @@
         captionText: '',
         initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue', 'node', 'coding', 'building stuff'],
         finalChoice: 'solving problems.',
-        github: 'https://github.com/vkolmakov',
+        socialMedia: [
+          { link: 'https://github.com/vkolmakov', iconClass: 'fa fa-github fa-2x' },
+          { link: 'https://www.linkedin.com/in/vkolmakov', iconClass: 'fa fa-linkedin fa-2x' },
+        ],
       }
     },
     created () {
