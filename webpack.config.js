@@ -1,10 +1,11 @@
 const path = require('path')
 const webpack = require('webpack') // eslint-disable-line
+const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
 
 module.exports = {
   entry: ['babel-polyfill', './src/main.js'],
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve('dist'),
     publicPath: '/dist/',
     filename: 'build-[hash:8].js',
   },
@@ -33,6 +34,15 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'index.template.html',
+      filename: path.resolve('index.html'),
+      inject: 'body',
+    }),
+  ],
+
   devServer: {
     historyApiFallback: true,
     noInfo: true,
