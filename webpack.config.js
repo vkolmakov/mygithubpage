@@ -2,11 +2,14 @@ const path = require('path')
 const webpack = require('webpack') // eslint-disable-line
 const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
 
+const isDev = process.env.NODE_ENV !== 'production'
+
 module.exports = {
   entry: ['babel-polyfill', './src/main.js'],
   output: {
     path: path.resolve('dist'),
-    publicPath: '/dist/',
+    // workaround for dev-server + html-plugin
+    publicPath: isDev ? '/' : '/dist/',
     filename: 'build-[hash:8].js',
   },
   resolve: {
@@ -38,7 +41,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.template.html',
-      filename: path.resolve('index.html'),
+      // workaround for dev-server + html-plugin
+      filename: isDev ? 'index.html' : path.resolve('index.html'),
       inject: 'body',
     }),
   ],
@@ -50,7 +54,7 @@ module.exports = {
   devtool: 'eval-source-map',
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (!isDev) {
   module.exports.devtool = 'source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
