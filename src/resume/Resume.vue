@@ -9,10 +9,10 @@
     <resume-experience></resume-experience>
     <resume-separator></resume-separator>
 
-    <resume-projects></resume-projects>
+    <resume-technical-skills></resume-technical-skills>
     <resume-separator></resume-separator>
 
-    <resume-technical-skills></resume-technical-skills>
+    <resume-projects></resume-projects>
   </div>
 </template>
 

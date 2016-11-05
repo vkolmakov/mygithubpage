@@ -3,7 +3,9 @@
     <h2>Professional Experience</h2>
     <div class="job" v-for="job in jobs">
       <div class="info">
-        <div class="company"><strong>{{ job.company }}</strong>, {{ job.city }}</div>
+        <div class="header">
+          <span class="company">{{ job.company }}</span>, {{ job.city }}
+        </div>
         <div class="title">{{ job.title }}</div>
         <div class="dates">{{ job.dates }}</div>
       </div>
@@ -30,7 +32,7 @@
   @import "../mixins";
 
   @mixin info-md() {
-   .company {
+   .header {
       @include left-col();
     }
     .title {
@@ -51,9 +53,14 @@
     .job {
       .info {
         @include clearfix();
-        .title {
+        white-space: nowrap;
+
+        .company {
           font-style: italic;
           font-weight: 500;
+        }
+        .title {
+          font-weight: 600;
         }
         @include breakpoint-md() {
           @include info-md();

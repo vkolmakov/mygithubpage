@@ -22,7 +22,7 @@
 <style lang="sass">
   @import "../mixins";
 
-  $github-color: #800080;
+  $github-color: #5d297e;
   $twitter-color: #6faedc;
 
   @mixin contacts-li-md() {
