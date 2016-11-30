@@ -14,10 +14,10 @@
 
 <script>
   export default {
+    props: ['data'],
+
     data() {
-      return {
-        ...this.$parent.$data.resumeProjects,
-      }
+      return this.data
     },
   }
 </script>

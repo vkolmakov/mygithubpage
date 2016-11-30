@@ -20,11 +20,11 @@
 
 <script>
   export default {
+    props: ['data'],
+
     data() {
-      return {
-        ...this.$parent.$data.resumeExperience,
-      }
-    }
+      return this.data
+    },
   }
 </script>
 

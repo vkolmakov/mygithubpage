@@ -11,11 +11,11 @@
 
 <script>
   export default {
+    props: ['data'],
+
     data() {
-      return {
-        ...this.$parent.$data.resumeHeader,
-      }
-    }
+      return this.data
+    },
   }
 </script>
 

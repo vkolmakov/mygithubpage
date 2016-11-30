@@ -1,18 +1,18 @@
 <template>
   <div class="resume">
-    <resume-header></resume-header>
+    <resume-header :data="header"></resume-header>
     <resume-separator></resume-separator>
 
-    <resume-education></resume-education>
+    <resume-education :data="education"></resume-education>
     <resume-separator></resume-separator>
 
-    <resume-experience></resume-experience>
+    <resume-experience :data="experience"></resume-experience>
     <resume-separator></resume-separator>
 
-    <resume-technical-skills></resume-technical-skills>
+    <resume-technical-skills :data="technicalSkills"></resume-technical-skills>
     <resume-separator></resume-separator>
 
-    <resume-projects></resume-projects>
+    <resume-projects :data="projects"></resume-projects>
   </div>
 </template>
 
@@ -36,7 +36,7 @@
 
     data () {
       return {
-        resumeHeader: {
+        header: {
           whoami: {
             name: 'Vladimir Kolmakov',
             link: 'http://vkolmakov.me',
@@ -60,7 +60,7 @@
           }]
         },
 
-        resumeEducation: {
+        education: {
           schools: [{
             name: 'Illinois Institute of Technology',
             city: 'Chicago, IL',
@@ -70,7 +70,7 @@
           }],
         },
 
-        resumeExperience: {
+        experience: {
           jobs: [{
             company: 'Target',
             city: 'Minneapolis, MN',
@@ -102,13 +102,13 @@
           }],
         },
 
-        resumeTechnicalSkills: {
+        technicalSkills: {
           languages: ['JavaScript/Node.js', 'Scala', 'Python', 'Java', 'C'],
           technologies: ['React', 'Redux', 'AngularJS', 'Vue', 'Express', 'Django', 'PostgreSQL', 'MongoDB', 'Elasticsearch', 'Kibana', 'HTML5', 'CSS3', 'Sass', 'Bootstrap', 'jQuery'],
           tools: ['Git', 'zsh', 'IntelliJ', 'Emacs'],
         },
 
-        resumeProjects: {
+        projects: {
           projects: [{
             name: 'Math Emporium',
             bulletpoints: [

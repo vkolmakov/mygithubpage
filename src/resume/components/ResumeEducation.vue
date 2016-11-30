@@ -12,11 +12,11 @@
 
 <script>
   export default {
+    props: ['data'],
+
     data() {
-      return {
-        ...this.$parent.$data.resumeEducation,
-      }
-    }
+      return this.data
+    },
   }
 </script>
 
