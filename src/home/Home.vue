@@ -3,11 +3,9 @@
     <h1>{{ name }}</h1>
 
     <h2>I <i class="fa fa-heart" aria-hidden="true"></i> <span class="typed">{{ captionText }}</span><span class="cursor">|</span></h2>
-
+    <span ref="liveRegion" class="visually-hidden" aria-live="polite"></span>
     <div class="icons">
-      <a v-for="sm in socialMedia" :href="sm.link">
-        <i :class="sm.iconClass" aria-hidden="true"></i>
-      </a>
+      <a v-for="sm in socialMedia" :class="sm.iconClass" :href="sm.link" :title="sm.title"></a>
     </div>
     <div class="links">
       <router-link to="/resume">resume</router-link>
@@ -24,8 +22,8 @@
         initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue', 'node', 'coding', 'building stuff'],
         finalChoice: 'solving problems.',
         socialMedia: [
-          { link: 'https://github.com/vkolmakov', iconClass: 'fa fa-github fa-2x' },
-          { link: 'https://www.linkedin.com/in/vkolmakov', iconClass: 'fa fa-linkedin fa-2x' },
+          { link: 'https://github.com/vkolmakov', iconClass: 'fa fa-github fa-2x', title: 'GitHub' },
+          { link: 'https://www.linkedin.com/in/vkolmakov', iconClass: 'fa fa-linkedin fa-2x', title: 'LinkedIn' },
         ],
       }
     },
@@ -80,9 +78,16 @@
         return this.changeCaptionOverTime(timeToCaption)
       },
 
+      updateLiveRegion(caption) {
+        if (this.$refs.liveRegion) {
+          this.$refs.liveRegion.innerHTML = `I like ${caption}`;
+        }
+      },
+
       async processCaption({ caption, timeConfig }) {
         const waitFor = (time) => this.delay(() => {}, time)
 
+        this.updateLiveRegion(caption);
         await this.typeCaption({ caption, time: timeConfig.timeTypingCaption })
         await waitFor(timeConfig.timeBeforeErasingCaption)
 
@@ -156,7 +161,6 @@
       text-align: center;
       a {
         color: $text-color;
-        text-decoration: none;
       }
   }
 
@@ -188,14 +192,31 @@
       color: $heart-color;
     }
 
-    .icons {
-      margin: 0 auto;
-      text-align: center;
-      i.fa {
-        margin: 0.5em;
+    .fa {
+      text-decoration: none;
+      transition-duration: 0.2s;
+      transition-property: transform;
+
+      &:hover, &:focus, &:active {
+        transform: scale(1.2);
       }
     }
 
+    .icons {
+      margin: 0 auto;
+      text-align: center;
+      > a {
+        margin: 0.5em;
+        text-decoration: none;
+      }
+    }
 
+    .visually-hidden {
+      position: absolute;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      height: 1px; width: 1px;
+      margin: -1px; padding: 0; border: 0;
+    }
   }
 </style>
