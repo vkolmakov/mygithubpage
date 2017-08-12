@@ -1,5 +1,5 @@
 <template>
-  <div class="education">
+  <section class="education">
     <h2>Education</h2>
     <div class="school" v-for="s in schools">
       <div class="school-name"><strong>{{ s.name }}</strong>, {{ s.city }}</div>
@@ -7,7 +7,7 @@
       <div class="major">{{ s.major }}</div>
       <div class="gpa">Cumulative GPA: {{ s.gpa }}</div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -23,36 +23,23 @@
 <style lang="sass">
   @import "../mixins";
 
-  @mixin education-md() {
-    .school-name, .major {
-      margin-left: 0;
-      @include left-col();
-    }
-    .graduation, .gpa {
-      margin-left: 0;
-      @include right-col();
-    }
-  }
-
-  @media print {
-    div.education {
-      @include education-md();
-    }
-  }
-
   .education {
-    @include container();
-    .school-name {
-      @include left-col(true);
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  @include breakpoint-md {
+    .education > .school {
+      display: flex;
+      flex-flow: row wrap;
     }
 
-    .graduation, .major, .gpa {
-      margin-left: 2em;
+    .education > .school > .school-name,.major {
+      align-self: flex-start;
     }
 
-    @include breakpoint-md() {
-      @include education-md();
+    .education > .school > .graduation,.gpa {
+      margin-left: auto;
     }
-
   }
 </style>
