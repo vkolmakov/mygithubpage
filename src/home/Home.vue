@@ -14,12 +14,33 @@
 </template>
 
 <script>
+  function getRandomFrom(list) {
+    return list[Math.floor(Math.random() * list.length)]
+  }
+
+  function delay(fn, time) {
+    return new Promise((resolve, reject) => {
+      try {
+        setTimeout(() => {
+          const result = fn.call(this)
+          resolve(result)
+        }, time)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
+
+  function waitFor(time) {
+    return delay(() => {}, time)
+  }
+
   export default {
     data() {
       return {
         name: 'Vladimir Kolmakov',
         captionText: '',
-        initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue', 'node', 'coding', 'building stuff'],
+        initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue.js', 'node.js', 'coding', 'building stuff'],
         finalChoice: 'solving problems.',
         socialMedia: [
           { link: 'https://github.com/vkolmakov', iconClass: 'fa fa-github fa-2x', title: 'GitHub' },
@@ -32,33 +53,12 @@
     },
 
     methods: {
-      head(list) {
-        return list[0]
-      },
-
-      getRandomFrom(list) {
-        return list[Math.floor(Math.random() * list.length)]
-      },
-
-      delay(fn, time) {
-        return new Promise((resolve, reject) => {
-          try {
-            setTimeout(() => {
-              const result = fn.call(this)
-              resolve(result)
-            }, time)
-          } catch (err) {
-            reject(err)
-          }
-        })
-      },
-
       clearCaption() {
         this.$set(this.$data, 'captionText', '')
       },
 
       changeCaptionOverTime(timeToCaption) {
-        return Promise.all(timeToCaption.map(({ time, currentCaption }) => this.delay(() => {
+        return Promise.all(timeToCaption.map(({ time, currentCaption }) => delay(() => {
           this.$set(this.$data, 'captionText', currentCaption)
           return currentCaption
         }, time)))
@@ -78,20 +78,27 @@
         return this.changeCaptionOverTime(timeToCaption)
       },
 
+      isFinalChoice(caption) {
+        return caption === this.finalChoice
+      },
+
       updateLiveRegion(caption) {
         if (this.$refs.liveRegion) {
-          this.$refs.liveRegion.innerHTML = `I like ${caption}`;
+          const verbChoices = ['like', 'love', 'am into', 'enjoy']
+          this.$refs.liveRegion.innerHTML =
+            this.isFinalChoice(caption)
+            ? `I ${getRandomFrom(verbChoices)} ${caption}. Feel free to explore the rest of my website.`
+            : `I ${getRandomFrom(verbChoices)} ${caption}`
         }
       },
 
       async processCaption({ caption, timeConfig }) {
-        const waitFor = (time) => this.delay(() => {}, time)
+        this.updateLiveRegion(caption)
 
-        this.updateLiveRegion(caption);
         await this.typeCaption({ caption, time: timeConfig.timeTypingCaption })
         await waitFor(timeConfig.timeBeforeErasingCaption)
 
-        if (caption === this.finalChoice) {
+        if (this.isFinalChoice(caption)) {
           return Promise.resolve()
         }
 
@@ -105,8 +112,8 @@
         const [caption, currentCaptionChoices] = do {
           const remaining = remainingCaptions.length
           if (remaining < 1) [null, null]
-          else if (remaining < 2) [this.head(remainingCaptions), [this.finalChoice]]
-          else [this.getRandomFrom(remainingCaptions), remainingCaptions]
+          else if (remaining < 2) [remainingCaptions[0], [this.finalChoice]]
+          else [getRandomFrom(remainingCaptions), remainingCaptions]
         }
 
         if ([caption, currentCaptionChoices].some(elem => elem === null)) {
