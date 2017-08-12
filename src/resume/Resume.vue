@@ -40,23 +40,28 @@
           whoami: {
             name: 'Vladimir Kolmakov',
             link: 'http://vkolmakov.me',
+            label: 'Link to personal website'
           },
           contacts: [{
             iconClass: 'fa fa-envelope',
             text: 'vkolmako@hawk.iit.edu',
             link: 'mailto:vkolmako@hawk.iit.edu',
+            label: 'Email address',
           }, {
             iconClass: 'fa fa-github',
             text: 'vkolmakov',
             link: 'https://github.com/vkolmakov',
+            label: 'Github',
           }, {
-            iconClass: 'fa fa-bookmark',
-            text: 'vkolmakov.me',
-            link: 'http://vkolmakov.me',
+            iconClass: 'fa fa-linkedin-square',
+            text: 'vkolmakov',
+            link: 'https://www.linkedin.com/in/vkolmakov/',
+            label: 'LinkedIn',
           }, {
             iconClass: 'fa fa-map-marker',
             text: 'Chicago, IL',
             link: 'https://www.google.com/maps/place/Chicago,+IL/@41.833648,-87.8722379,11z/data=!3m1!4b1!4m5!3m4!1s0x880e2c3cd0f4cbed:0xafe0a6ad09c0c000!8m2!3d41.8781136!4d-87.6297982',
+            label: 'Location',
           }]
         },
 

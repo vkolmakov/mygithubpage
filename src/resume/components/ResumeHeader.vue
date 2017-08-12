@@ -1,9 +1,14 @@
 <template>
   <div class="header">
-    <h1><a :href="whoami.link">{{whoami.name}}</a></h1>
+    <h1>
+      <a :href="whoami.link" :aria-label="whoami.description">
+        <label :id="personal-website-label">{{ whoami.label }}</label> {{whoami.name}}
+      </a>
+    </h1>
     <ul class="contact">
-      <li v-for="c in contacts">
-        <i :class="c.iconClass"></i> <a :href="c.link">{{ c.text }}</a>
+      <li v-for="(c, idx) in contacts">
+        <label :id="`contact-${idx}`" class="visually-hidden">{{ c.label }}</label>
+        <a :href="c.link" :aria-labelledby="`contact-${idx}`"><i :class="c.iconClass" aria-hidden="true"></i>{{ c.text }}</a>
       </li>
     </ul>
   </div>
@@ -23,72 +28,57 @@
   @import "../mixins";
 
   $github-color: #5d297e;
-  $twitter-color: #6faedc;
-
-  @mixin contacts-li-md() {
-    &:nth-child(odd), &:nth-child(even) {
-      padding: 0 0.3em;
-      width: inherit;
-      margin: 0;
-    }
-  }
-
-  @mixin contacts-ul-md() {
-    float: right;
-  }
-
-  @media print {
-    div.header > ul {
-      @include contacts-ul-md();
-      li {
-        @include contacts-li-md();
-      }
-
-    }
-  }
+  $linkedin-color: #0077b5;
 
   .header {
-    @include clearfix();
-    @include container();
+    display: flex;
+    flex-flow: column nowrap;
+  }
 
-    h1 {
-      margin: 0;
+  .header > h1 > a > label {
+    @include visually-hidden;
+  }
+
+  .contact {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .contact > li {
+    width: 50%;
+
+    &:nth-child(even) {
+      text-align: right;
     }
+  }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+  .contact > li > label {
+    @include visually-hidden;
+  }
 
-      @include breakpoint-md() {
-        @include contacts-ul-md();
-      }
-
-      li {
-        display: inline;
-        float: left;
-        margin: 0;
-
-        &:nth-child(odd) {
-          @include left-col();
-        }
-
-        &:nth-child(even) {
-          @include right-col();
-        }
-
-        @include breakpoint-md() {
-          @include contacts-li-md();
-        }
-
-      }
-    }
+  .fa {
+    margin-right: 0.2em;
   }
 
   .fa-github {
-      color: $github-color;
+    color: $github-color;
   }
-  .fa-twitter {
-      color: $twitter-color;
+
+  .fa-linkedin-square {
+    color: $linkedin-color;
+  }
+
+  @include on-medium-screen-and-paper {
+    .contact {
+      justify-content: flex-end;
+    }
+
+    .contact > li {
+      width: auto;
+      padding-left: 0.75em;
+    }
   }
 </style>
