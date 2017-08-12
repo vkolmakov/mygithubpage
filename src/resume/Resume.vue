@@ -141,6 +141,36 @@
   @import "./ComputerModern/cmun-serif.css";
   @import "./mixins";
 
+  @media (min-width: $large-screen-size) {
+    :root {
+      font-size: 1.15em;
+    }
+  }
+
+  @media (min-width: $medium-screen-size) and (max-width: $large-screen-size) {
+    :root {
+      font-size: 0.8em;
+    }
+  }
+
+  @media (min-width: $small-screen-size) and (max-width: $medium-screen-size) {
+    :root {
+      font-size: 0.65em;
+    }
+  }
+
+  @media (min-width: $tiny-screen-size) and (max-width: $small-screen-size) {
+    :root {
+      font-size: 0.8em;
+    }
+  }
+
+  @media (max-width: $tiny-screen-size) {
+    :root {
+      font-size: 0.72em;
+    }
+  }
+
   @mixin resume-md() {
     font-size: 12px;
   }
@@ -159,9 +189,8 @@
 
   .resume {
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 50em;
     @include breakpoint-md() {
-      @include resume-md();
       padding: 80px 100px;
       border: 1px solid #ccc;
       box-shadow: 2px 2px 4px #aaa;
@@ -172,7 +201,6 @@
     background: #fff;
     color: #111;
     font-family: 'Computer Modern Serif';
-    font-size: 11px;
 
     a {
       text-decoration: none;

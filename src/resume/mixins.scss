@@ -1,7 +1,10 @@
 @import "~susy/sass/susy";
 @import "~breakpoint-sass/stylesheets/breakpoint";
 
-$md: 748px;
+$large-screen-size: 1024px;
+$medium-screen-size: 768px;
+$small-screen-size: 640px;
+$tiny-screen-size: 375px;
 
 @mixin left-col($is-last: false) {
   @if $is-last == true {
@@ -22,7 +25,7 @@ $md: 748px;
 }
 
 @mixin breakpoint-md() {
-  @include breakpoint($md) {
+  @include breakpoint($medium-screen-size) {
     @content
   }
 }
