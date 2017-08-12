@@ -35,7 +35,7 @@
     @include bulletpoints();
   }
 
-  @include breakpoint-md {
+  @include on-medium-screen-and-paper {
     .job > .info {
       display: flex;
       flex-flow: row wrap;

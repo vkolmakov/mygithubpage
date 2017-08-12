@@ -24,6 +24,16 @@ $tiny-screen-size: 375px;
   clear: both;
 }
 
+@mixin on-medium-screen-and-paper {
+  @include breakpoint($medium-screen-size) {
+    @content;
+  }
+
+  @media print {
+    @content;
+  }
+}
+
 @mixin breakpoint-md() {
   @include breakpoint($medium-screen-size) {
     @content

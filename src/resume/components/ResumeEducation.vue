@@ -28,7 +28,7 @@
     flex-flow: column wrap;
   }
 
-  @include breakpoint-md {
+  @include on-medium-screen-and-paper {
     .education > .school {
       display: flex;
       flex-flow: row wrap;
