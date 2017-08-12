@@ -176,45 +176,51 @@
     }
   }
 
-  @mixin resume-md() {
-    font-size: 12px;
-  }
-
-  @media print {
-    div.resume {
-      @include resume-md();
-      max-width: 600px;
-      padding: 30px 0;
-      border: 0;
-      background: #fff;
-      box-shadow: none;
-      -webkit-box-shadow: none;
-      }
-  }
-
   .resume {
-    margin: 0 auto;
     max-width: 50em;
-    @include breakpoint-md() {
+
+    padding: 1em;
+    margin: 0 auto;
+
+    background: #fff;
+    color: #333;
+    font-family: 'Computer Modern Serif';
+
+    h1 {
+      margin: 0.1em 0;
+    }
+
+    h2 {
+      @include header;
+    }
+
+    @include breakpoint-medium-screen {
       padding: 80px 100px;
       border: 1px solid #ccc;
       box-shadow: 2px 2px 4px #aaa;
-      -webkit-box-shadow: 2px 2px 4px #aaa;
     }
+  }
 
-    padding: 1em;
-    background: #fff;
+  .resume a {
+    text-decoration: none;
     color: #111;
-    font-family: 'Computer Modern Serif';
 
-    a {
-      text-decoration: none;
+    &:hover,&:focus {
+      text-decoration: underline;
+    }
+  }
+
+  @media print {
+    .resume {
+      font-size: 12px;
+      border: 0;
+      padding: 1.5em 0 0 0;
+      margin: 0 auto;
+
       color: #111;
-    }
+      background-color: #fff;
+      box-shadow: none;
 
-    h1, h2 {
-      @include header();
     }
-
   }
 </style>

@@ -2,7 +2,7 @@
   <div class="header">
     <h1>
       <a :href="whoami.link" :aria-label="whoami.description">
-        <label :id="personal-website-label">{{ whoami.label }}</label> {{whoami.name}}
+        <label>{{ whoami.label }}</label> {{whoami.name}}
       </a>
     </h1>
     <ul class="contact">

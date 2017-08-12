@@ -6,26 +6,14 @@ $medium-screen-size: 768px;
 $small-screen-size: 640px;
 $tiny-screen-size: 375px;
 
-@mixin left-col($is-last: false) {
-  @if $is-last == true {
-    @include span(12 of 12 last);
-  } @else {
-    @include span(6 of 12);
+@mixin breakpoint-medium-screen {
+  @include breakpoint($medium-screen-size) {
+    @content;
   }
 }
 
-@mixin right-col() {
-  @include span(6 of 12 last);
-  text-align: right;
-}
-
-@mixin clearfix() {
-  overflow: hidden;
-  clear: both;
-}
-
 @mixin on-medium-screen-and-paper {
-  @include breakpoint($medium-screen-size) {
+  @include breakpoint-medium-screen {
     @content;
   }
 
@@ -34,23 +22,12 @@ $tiny-screen-size: 375px;
   }
 }
 
-@mixin breakpoint-md() {
-  @include breakpoint($medium-screen-size) {
-    @content
-  }
-}
-
-@mixin clearfix() {
-  overflow: hidden;
-  clear: both;
-}
-
-@mixin bulletpoints() {
+@mixin bulletpoints {
   margin: 0.5em 0;
   padding-left: 2em;
 }
 
-@mixin header() {
+@mixin header {
   margin: 0.25em 0;
 }
 
