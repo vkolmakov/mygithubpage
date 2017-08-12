@@ -1,5 +1,5 @@
 <template>
-  <div class="projects">
+  <section class="projects">
     <h2>Projects</h2>
     <div class="project" v-for="p in projects">
       <h3>{{ p.name }}</h3>
@@ -9,7 +9,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
