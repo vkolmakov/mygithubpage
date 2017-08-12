@@ -1,12 +1,12 @@
 <template>
-  <div class="experience">
+  <section class="experience">
     <h2>Professional Experience</h2>
     <div class="job" v-for="job in jobs">
       <div class="info">
-        <div class="header">
-          <span class="company">{{ job.company }}</span>, {{ job.city }}
+        <div class="company-city">
+          <em>{{ job.company }}</em>, {{ job.city }}
         </div>
-        <div class="title">{{ job.title }}</div>
+        <div class="title"><strong>{{ job.title }}</strong></div>
         <div class="dates">{{ job.dates }}</div>
       </div>
       <ul>
@@ -15,7 +15,7 @@
           </li>
       </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -31,47 +31,31 @@
 <style lang="sass">
   @import "../mixins";
 
-  @mixin info-md() {
-   .header {
-      @include left-col();
-    }
-    .title {
-      @include left-col();
-    }
-    .dates {
-      @include right-col();
-    }
+  .job ul {
+    @include bulletpoints();
   }
 
-  @media print {
-    div.experience > .job > .info {
-      @include info-md();
+  @include breakpoint-md {
+    .job > .info {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .job > .info > .company-city {
+      order: 1;
+      align-self: flex-start;
+    }
+
+    .job > .info > .title {
+      order: 3;
+      /* carefully selected voodoo constant that adds just enough */
+      /* space to the title so it has to wrap to the next row */
+      margin-right: 35%;
+    }
+
+    .job > .info > .dates {
+      margin-left: auto;
+      order: 2;
     }
   }
-
-  .experience {
-    .job {
-      .info {
-        @include clearfix();
-        white-space: nowrap;
-
-        .company {
-          font-style: italic;
-          font-weight: 500;
-        }
-        .title {
-          font-weight: 600;
-        }
-        @include breakpoint-md() {
-          @include info-md();
-        }
-      }
-
-      ul {
-        @include clearfix()
-        @include bulletpoints();
-      }
-    }
-  }
-
 </style>
