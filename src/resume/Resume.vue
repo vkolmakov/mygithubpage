@@ -154,25 +154,25 @@
 
   @media (min-width: $medium-screen-size) and (max-width: $large-screen-size) {
     :root {
-      font-size: 0.8em;
+      font-size: 0.9em;
     }
   }
 
   @media (min-width: $small-screen-size) and (max-width: $medium-screen-size) {
     :root {
-      font-size: 0.65em;
+      font-size: 1.1em;
     }
   }
 
   @media (min-width: $tiny-screen-size) and (max-width: $small-screen-size) {
     :root {
-      font-size: 0.8em;
+      font-size: 1.05em;
     }
   }
 
   @media (max-width: $tiny-screen-size) {
     :root {
-      font-size: 0.72em;
+      font-size: 0.9em;
     }
   }
 
