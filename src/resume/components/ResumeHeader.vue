@@ -42,17 +42,11 @@
   .contact {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
+
     padding: 0;
     margin: 0;
     list-style-type: none;
-  }
-
-  .contact > li {
-    width: 50%;
-
-    &:nth-child(even) {
-      text-align: right;
-    }
   }
 
   .contact > li > label {

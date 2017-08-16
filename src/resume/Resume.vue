@@ -172,7 +172,7 @@
 
   @media (max-width: $tiny-screen-size) {
     :root {
-      font-size: 0.9em;
+      font-size: 0.95em;
     }
   }
 
@@ -205,7 +205,7 @@
     text-decoration: none;
     color: #111;
 
-    &:hover,&:focus {
+    &:hover, &:focus {
       text-decoration: underline;
     }
   }
