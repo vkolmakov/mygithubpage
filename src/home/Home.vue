@@ -168,6 +168,11 @@
       text-align: center;
       a {
         color: $text-color;
+        text-decoration: none;
+
+        &:hover, &:focus {
+          text-decoration: underline;
+        }
       }
   }
 
