@@ -44,6 +44,7 @@
     .job > .info > .company-city {
       order: 1;
       align-self: flex-start;
+      width: 50%;
     }
 
     .job > .info > .title {
