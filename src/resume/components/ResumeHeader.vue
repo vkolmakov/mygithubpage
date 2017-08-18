@@ -35,6 +35,10 @@
     flex-flow: column nowrap;
   }
 
+  .header > h1 > a {
+    color: #333;
+  }
+
   .header > h1 > a > label {
     @include visually-hidden;
   }
