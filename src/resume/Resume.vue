@@ -195,7 +195,7 @@
     }
 
     @include breakpoint-medium-screen {
-      padding: 80px 100px;
+      padding: 3.5em 6em;
       border: 1px solid #ccc;
       box-shadow: 2px 2px 4px #aaa;
     }
