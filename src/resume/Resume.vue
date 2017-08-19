@@ -93,7 +93,7 @@
             dates: 'June 2016 - August 2016',
             bulletpoints: [
               'Worked with the Threat Detection Operations team at the Cyber Fusion Center on establishing Mac OSX forensics process.',
-              'Built an extensible Mac OSX forensics framework using multiple opensource tools.',
+              'Built an extensible Mac OSX forensics framework using multiple open-source tools.',
               'Contributed to several internal projects.'
             ],
           }, {
@@ -127,7 +127,7 @@
           projects: [{
             name: 'Math Emporium',
             bulletpoints: [
-              'Self-service web application that allows students to login using their school email address and schedule tutoring appointments directly at Math Emporium\'s calendar. Has complete integration with Google Calendar and serves as a configurable backend for the Academic Scheduler Chrome extension.',
+              'Self-service web application that allows students to log in using their school email address and schedule tutoring appointments directly at Math Emporium\'s calendar. Has complete integration with Google Calendar and serves as a configurable backend for the <a href="https://github.com/vkolmakov/academic-scheduler-extension">Academic Scheduler Chrome extension</a>.',
               'Backend: Node.js, Express, PostgreSQL, MongoDB. Frontend: React, Redux, Sass.',
               'Source: <a href="https://github.com/vkolmakov/math-emporium">Github</a> Link: <a href="http://tutoringatwright.com">tutoringatwright.com</a>',
             ],
