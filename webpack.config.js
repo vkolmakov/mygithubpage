@@ -4,8 +4,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
 
 const isDev = process.env.NODE_ENV !== 'production'
 
+const VENDOR_LIBS = [
+  'vue',
+  'vue-router',
+]
+
 module.exports = {
-  entry: ['./src/main.js'],
+  entry: {
+    bundle: './src/main.js',
+    vendor: VENDOR_LIBS,
+  },
   output: {
     path: path.resolve('dist'),
     // workaround for dev-server + html-plugin
@@ -74,6 +82,12 @@ if (!isDev) {
         warnings: false,
         screw_ie8: true,
       },
+      output: {
+        comments: false,
+      },
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest'],
     }),
   ])
 }
