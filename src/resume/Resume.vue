@@ -145,7 +145,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="scss">
   @import "./ComputerModern/cmun-serif.css";
   @import "./mixins";
 

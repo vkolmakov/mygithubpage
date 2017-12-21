@@ -19,7 +19,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="scss">
   @import "../mixins";
 
   .technical-skills {

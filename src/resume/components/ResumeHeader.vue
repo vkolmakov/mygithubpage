@@ -24,7 +24,7 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="scss">
   @import "../mixins";
 
   $github-color: #5d297e;

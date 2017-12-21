@@ -142,7 +142,7 @@
   }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
   .home {
     $text-color: #333;
     $github-color: #5d297e;

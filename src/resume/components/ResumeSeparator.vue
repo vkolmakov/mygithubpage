@@ -3,7 +3,7 @@
   </div>
 </template>
 
-<style lang="sass">
+<style lang="scss">
 .separator {
     border-style: dotted;
     border-width: 1px;
