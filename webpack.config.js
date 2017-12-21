@@ -5,15 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
 const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  entry: ['@babel/polyfill', './src/main.js'],
+  entry: ['./src/main.js'],
   output: {
     path: path.resolve('dist'),
     // workaround for dev-server + html-plugin
     publicPath: isDev ? '/' : '/dist/',
-    filename: 'build-[hash:8].js',
+    filename: '[name].[hash:8].js',
+    chunkFilename: '[name].[hash:8].js',
   },
   resolve: {
     modules: ['node_modules'],
+    alias: {
+      // required to include both runtime and template compiler for lazy-loading
+      vue$: 'vue/dist/vue.esm.js',
+    },
   },
   module: {
     rules: [

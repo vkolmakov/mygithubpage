@@ -2,17 +2,25 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import App from './App.vue'
-import Home from './home/Home.vue'
-import Resume from './resume/Resume.vue'
 
 const ROUTE_PATH = {
   HOME: '/',
   RESUME: '/resume',
 }
 
+const Home = () => import(/* webpackChunkName: "home" */ './home/Home.vue')
+const Resume = () => import(/* webpackChunkName: "resume" */ './resume/Resume.vue')
+
 const routes = [
-  { path: ROUTE_PATH.HOME, component: Home, meta: { title: 'Personal Website' } },
-  { path: ROUTE_PATH.RESUME, component: Resume, meta: { title: 'Resume' } },
+  {
+    path: ROUTE_PATH.HOME,
+    component: Home,
+    meta: { title: 'Personal Website' },
+  }, {
+    path: ROUTE_PATH.RESUME,
+    component: Resume,
+    meta: { title: 'Resume' },
+  },
 ]
 
 Vue.use(VueRouter)
