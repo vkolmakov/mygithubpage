@@ -109,11 +109,17 @@
       },
 
       async updateCaption(remainingCaptions) {
-        const [caption, currentCaptionChoices] = do {
-          const remaining = remainingCaptions.length
-          if (remaining < 1) [null, null]
-          else if (remaining < 2) [remainingCaptions[0], [this.finalChoice]]
-          else [getRandomFrom(remainingCaptions), remainingCaptions]
+        const remaining = remainingCaptions.length
+
+        let caption;
+        let currentCaptionChoices;
+
+        if (remaining < 1) {
+          [caption, currentCaptionChoices] = [null, null]
+        } else if (remaining < 2) {
+          [caption, currentCaptionChoices] = [remainingCaptions[0], [this.finalChoice]]
+        } else {
+          [caption, currentCaptionChoices] = [getRandomFrom(remainingCaptions), remainingCaptions]
         }
 
         if ([caption, currentCaptionChoices].some(elem => elem === null)) {

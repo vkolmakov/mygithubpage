@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
 const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-  entry: ['babel-polyfill', './src/main.js'],
+  entry: ['@babel/polyfill', './src/main.js'],
   output: {
     path: path.resolve('dist'),
     // workaround for dev-server + html-plugin
