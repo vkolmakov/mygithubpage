@@ -11,7 +11,9 @@
 
 <script>
   export default {
-    props: ['data'],
+    props: {
+      data: Object,
+    },
 
     data() {
       return this.data
@@ -24,7 +26,7 @@
 
   .technical-skills {
     ul {
-        @include bulletpoints();
-      }
+      @include bulletpoints();
+    }
   }
 </style>

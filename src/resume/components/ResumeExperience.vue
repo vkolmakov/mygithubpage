@@ -20,7 +20,9 @@
 
 <script>
   export default {
-    props: ['data'],
+    props: {
+      data: Object,
+    },
 
     data() {
       return this.data

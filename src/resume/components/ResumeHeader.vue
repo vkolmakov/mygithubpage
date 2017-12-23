@@ -8,15 +8,23 @@
     <ul class="contact">
       <li v-for="(c, idx) in contacts">
         <label :id="`contact-${idx}`" class="visually-hidden">{{ c.label }}</label>
-        <a :href="c.link" :aria-labelledby="`contact-${idx}`"><i :class="c.iconClass" aria-hidden="true"></i>{{ c.text }}</a>
+        <a :href="c.link" :aria-labelledby="`contact-${idx}`"><icon :kind="c.iconKind" :wrapper-class="c.iconClass"></icon>{{ c.text }}</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import Icon from "../../components/Icon.vue";
+
   export default {
-    props: ['data'],
+    props: {
+      data: Object
+    },
+
+    components: {
+      Icon,
+    },
 
     data() {
       return this.data
@@ -57,16 +65,16 @@
     @include visually-hidden;
   }
 
-  .fa {
+  .icon {
     margin-right: 0.2em;
   }
 
-  .fa-github {
-    color: $github-color;
+  .icon-github {
+    fill: $github-color;
   }
 
-  .fa-linkedin-square {
-    color: $linkedin-color;
+  .icon-linkedin-square {
+    fill: $linkedin-color;
   }
 
   @include on-medium-screen-and-paper {
