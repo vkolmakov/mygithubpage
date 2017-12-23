@@ -2,18 +2,30 @@
   <div class="home">
     <h1>{{ name }}</h1>
 
-    <h2>I <i class="fa fa-heart" aria-hidden="true"></i> <span class="typed">{{ captionText }}</span><span class="cursor">|</span></h2>
+    <h2>
+      <span>I</span>
+      <icon wrapper-class="icon-heart" kind="icon-heart"></icon>
+      <span class="typed">{{ captionText }}</span><span class="cursor">|</span>
+    </h2>
+
     <span ref="liveRegion" class="visually-hidden" aria-live="polite"></span>
-    <div class="icons">
-      <a v-for="sm in socialMedia" :class="sm.iconClass" :href="sm.link" :title="sm.title"></a>
+
+    <div class="social-media-icons">
+      <a class="social-media-link" v-for="sm in socialMedia" :href="sm.link" :title="sm.title">
+        <icon :wrapper-class="sm.iconClass" :kind="sm.iconKind"></icon>
+      </a>
     </div>
+
     <div class="links">
-      <router-link to="/resume">resume</router-link>
+      <router-link to="/resume" class="links-link">resume</router-link>
+      <router-link to="/blog" class="links-link">blog</router-link>
     </div>
   </div>
 </template>
 
 <script>
+  import Icon from '../components/Icon.vue'
+
   function getRandomFrom(list) {
     return list[Math.floor(Math.random() * list.length)]
   }
@@ -36,6 +48,10 @@
   }
 
   export default {
+    components: {
+      Icon,
+    },
+
     data() {
       return {
         name: 'Vladimir Kolmakov',
@@ -43,8 +59,8 @@
         initialChoices: ['functional programming', 'web', 'scala', 'machine learning', 'javascript', 'big data', 'react', 'vue.js', 'node.js', 'coding', 'building stuff'],
         finalChoice: 'solving problems.',
         socialMedia: [
-          { link: 'https://github.com/vkolmakov', iconClass: 'fa fa-github fa-2x', title: 'GitHub' },
-          { link: 'https://www.linkedin.com/in/vkolmakov', iconClass: 'fa fa-linkedin fa-2x', title: 'LinkedIn' },
+          { link: 'https://github.com/vkolmakov', iconKind: 'icon-github', iconClass: 'icon-github', title: 'GitHub' },
+          { link: 'https://www.linkedin.com/in/vkolmakov', iconKind: 'icon-linkedin', iconClass: 'icon-linkedin', title: 'LinkedIn' },
         ],
       }
     },
@@ -171,16 +187,23 @@
     }
 
     .links {
-      text-align: center;
-      a {
-        color: $text-color;
-        text-decoration: none;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
 
-        &:hover, &:focus {
-          text-decoration: underline;
+      .links-link {
+        margin-top: 0.25em;
+        color: $text-color;
+        outline: 0;
+
+        transition-duration: 0.1s;
+        transition-property: transform;
+
+        &:focus, &:active {
+          transform: scale(1.2);
         }
       }
-  }
+    }
 
     .cursor {
       opacity: 1;
@@ -197,35 +220,40 @@
       }
     }
 
-    .fa-github {
-      color: $github-color;
+    .icon-github {
+      fill: $github-color;
     }
-    .fa-twitter {
-      color: $twitter-color;
+    .icon-twitter {
+      fill: $twitter-color;
     }
-    .fa-linkedin {
-      color: $linkedin-color;
+    .icon-linkedin {
+      fill: $linkedin-color;
     }
-    .fa-heart {
-      color: $heart-color;
+    .icon-heart {
+      fill: $heart-color;
     }
 
-    .fa {
+    .icon {
       text-decoration: none;
-      transition-duration: 0.2s;
+      transition-duration: 0.1s;
       transition-property: transform;
-
-      &:hover, &:focus, &:active {
-        transform: scale(1.2);
-      }
     }
 
-    .icons {
-      margin: 0 auto;
+    .social-media-icons {
+      margin: 0.5em auto;
       text-align: center;
-      > a {
+      .social-media-link {
+        outline: 0;
+
+        font-size: 2em;
         margin: 0.5em;
         text-decoration: none;
+
+        &:focus, &:hover, &:active {
+          .icon {
+            transform: scale(1.4);
+          }
+        }
       }
     }
 
