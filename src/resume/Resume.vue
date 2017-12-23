@@ -159,13 +159,7 @@
     }
   }
 
-  @media (min-width: $medium-screen-size) and (max-width: $large-screen-size) {
-    :root {
-      font-size: 0.9em;
-    }
-  }
-
-  @media (min-width: $small-screen-size) and (max-width: $medium-screen-size) {
+  @media (min-width: $small-screen-size) and (max-width: $large-screen-size) {
     :root {
       font-size: 1.1em;
     }
@@ -201,7 +195,7 @@
       @include header;
     }
 
-    @include breakpoint-medium-screen {
+    @include breakpoint-large-screen {
       padding: 3.5em 6em;
       border: 1px solid #ccc;
       box-shadow: 2px 2px 4px #aaa;

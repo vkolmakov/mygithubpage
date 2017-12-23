@@ -11,6 +11,12 @@ $tiny-screen-size: 375px;
   }
 }
 
+@mixin breakpoint-large-screen {
+  @include breakpoint($large-screen-size) {
+    @content;
+  }
+}
+
 @mixin on-medium-screen-and-paper {
   @include breakpoint-medium-screen {
     @content;
