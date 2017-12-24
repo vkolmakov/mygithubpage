@@ -1,18 +1,13 @@
-@import "~breakpoint-sass/stylesheets/breakpoint";
-
-$large-screen-size: 1024px;
-$medium-screen-size: 768px;
-$small-screen-size: 640px;
-$tiny-screen-size: 375px;
+@import "../constants.scss";
 
 @mixin breakpoint-medium-screen {
-  @include breakpoint($medium-screen-size) {
+  @media (min-width: $medium-screen-size) {
     @content;
   }
 }
 
 @mixin breakpoint-large-screen {
-  @include breakpoint($large-screen-size) {
+  @media (min-width: $large-screen-size) {
     @content;
   }
 }
