@@ -175,7 +175,7 @@
     margin: 0 auto;
     max-width: 50em;
 
-    font-family: "Raleway", sans-serif;
+    font-family: "Raleway", "Helvetica Neue", "Arial", sans-serif;
     color: $text-color;
 
     line-height: 1.5;
