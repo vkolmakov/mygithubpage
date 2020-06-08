@@ -1,19 +1,18 @@
 module.exports = {
-  root: true,
-  parser: 'babel-eslint',
-  parserOptions: {
-    sourceType: 'module'
-  },
-  extends: 'airbnb-base',
-
-  plugins: [
-    'html'
-  ],
-
-  'rules': {
-    'import/no-unresolved': 0,
-    // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'semi': [2, 'never']
-  }
-}
+    parser: "babel-eslint",
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+            modules: true,
+        },
+    },
+    extends: [
+        "eslint:recommended", // "eslint-config-prettier"
+    ],
+    env: {
+        browser: true,
+        node: true,
+        es6: true,
+    },
+    plugins: ["vue"],
+};

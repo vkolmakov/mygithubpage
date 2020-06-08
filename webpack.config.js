@@ -1,25 +1,23 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path')
-const webpack = require('webpack') // eslint-disable-line
-const HtmlWebpackPlugin = require('html-webpack-plugin') // eslint-disable-line
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const isDev = process.env.NODE_ENV !== 'production'
 
-const VENDOR_LIBS = [
-  'vue',
-  'vue-router',
-]
-
 module.exports = {
+  mode: 'development',
   entry: {
     bundle: './src/main.js',
-    vendor: VENDOR_LIBS,
   },
   output: {
     path: path.resolve('dist'),
     // workaround for dev-server + html-plugin
     publicPath: isDev ? '/' : '/dist/',
-    filename: '[name].[hash:8].js',
-    chunkFilename: '[name].[hash:8].js',
+    filename: isDev ? '[name].[hash].js' : '[name].[chunkhash].js',
+    chunkFilename: isDev ? '[name].[hash].js' : '[name].[chunkhash].js',
   },
   resolve: {
     modules: ['node_modules'],
@@ -33,6 +31,16 @@ module.exports = {
       {
         test: /\.vue$/,
         use: ['vue-loader'],
+      },
+      {
+        test: /\.s?css$/,
+        use: isDev
+          ? ['style-loader', 'css-loader', 'sass-loader']
+          : [
+            MiniCssExtractPlugin.loader,
+            { loader: 'css-loader', options: { minimize: true } },
+            'sass-loader',
+          ],
       },
       {
         test: /\.js$/,
@@ -58,6 +66,7 @@ module.exports = {
       filename: isDev ? 'index.html' : path.resolve('index.html'),
       inject: 'body',
     }),
+    new VueLoaderPlugin(),
   ],
 
   devServer: {
@@ -68,26 +77,29 @@ module.exports = {
 }
 
 if (!isDev) {
+  module.exports.mode = 'production'
+  module.exports.optimization = {
+    minimize: true,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
+  }
   module.exports.devtool = 'source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
       },
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        screw_ie8: true,
-      },
-      output: {
-        comments: false,
-      },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
+    new MiniCssExtractPlugin({
+      filename: isDev ? '[name].css' : '[name].[hash].css',
+      chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
     }),
   ])
 }

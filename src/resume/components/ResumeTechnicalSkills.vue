@@ -1,32 +1,35 @@
 <template>
-  <section class="technical-skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li><strong>Languages:</strong> {{ languages.join(', ') }}</li>
-      <li><strong>Technologies/Frameworks:</strong> {{ technologies.join(', ') }}</li>
-      <li><strong>Tools:</strong> {{ tools.join(', ') }}</li>
-    </ul>
-  </section>
+    <section class="technical-skills">
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Languages:</strong> {{ languages.join(", ") }}</li>
+            <li>
+                <strong>Technologies/Frameworks:</strong>
+                {{ technologies.join(", ") }}
+            </li>
+            <li><strong>Tools:</strong> {{ tools.join(", ") }}</li>
+        </ul>
+    </section>
 </template>
 
 <script>
-  export default {
+export default {
     props: {
-      data: Object,
+        data: Object,
     },
 
     data() {
-      return this.data
+        return this.data;
     },
-  }
+};
 </script>
 
 <style lang="scss">
-  @import "../mixins";
+@import "../mixins";
 
-  .technical-skills {
+.technical-skills {
     ul {
-      @include bulletpoints();
+        @include bulletpoints();
     }
-  }
+}
 </style>

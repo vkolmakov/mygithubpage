@@ -1,6 +1,5 @@
 <template>
-  <div class="separator">
-  </div>
+    <div class="separator"></div>
 </template>
 
 <style lang="scss">
