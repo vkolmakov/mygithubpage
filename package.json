@@ -11,6 +11,7 @@
         "lint": "eslint src"
     },
     "dependencies": {
+        "fontfaceobserver": "^2.1.0",
         "prismjs": "^1.15.0",
         "vue": "^2.5.13",
         "vue-router": "^2.5.3"

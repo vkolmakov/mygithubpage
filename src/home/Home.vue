@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home" v-if="shouldDisplay">
         <h1>{{ name }}</h1>
 
         <h2>
@@ -9,7 +9,11 @@
             <span class="cursor">_</span>
         </h2>
 
-        <span ref="liveRegion" class="visually-hidden" aria-live="polite"></span>
+        <span
+            ref="liveRegion"
+            class="visually-hidden"
+            aria-live="polite"
+        ></span>
 
         <div class="social-media-icons">
             <a
@@ -29,6 +33,7 @@
 </template>
 
 <script>
+import FontFaceObserver from "fontfaceobserver";
 import Icon from "../components/Icon.vue";
 
 function getRandomFrom(list) {
@@ -53,12 +58,25 @@ function waitFor(time) {
 }
 
 export default {
+    beforeCreate() {
+        new FontFaceObserver("Open Sans")
+            .load()
+            .then(() => {
+                this.shouldDisplay = true;
+            })
+            .catch(() => {
+                // in case something fails still show the page
+                this.shouldDisplay = true;
+            });
+    },
+
     components: {
         Icon,
     },
 
     data() {
         return {
+            shouldDisplay: false,
             name: "Vladimir Kolmakov",
             captionText: "",
             initialChoices: [

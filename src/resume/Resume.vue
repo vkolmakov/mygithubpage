@@ -1,5 +1,5 @@
 <template>
-    <div class="resume">
+    <div class="resume" v-if="shouldDisplay">
         <resume-header :data="header"></resume-header>
         <resume-separator></resume-separator>
 
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import FontFaceObserver from "fontfaceobserver";
 import ResumeHeader from "./components/ResumeHeader.vue";
 import ResumeEducation from "./components/ResumeEducation.vue";
 import ResumeExperience from "./components/ResumeExperience.vue";
@@ -34,8 +35,29 @@ export default {
         ResumeSeparator,
     },
 
+    beforeCreate() {
+        const requiredFonts = [
+            { name: "Computer Modern Serif", weight: "normal" },
+            { name: "Computer Modern Serif", weight: "bold" },
+        ];
+
+        Promise.all(
+            requiredFonts.map(({ name, weight }) =>
+                new FontFaceObserver(name, { weight }).load(null, 2000)
+            )
+        )
+            .then(() => {
+                this.shouldDisplay = true;
+            })
+            .catch(() => {
+                // in case something fails still show the page
+                this.shouldDisplay = true;
+            });
+    },
+
     data() {
         return {
+            shouldDisplay: false,
             header: {
                 whoami: {
                     name: "Vladimir Kolmakov",
@@ -46,8 +68,8 @@ export default {
                     {
                         iconKind: "icon-envelope",
                         iconClass: "icon-envelope",
-                        text: "vkolmako@hawk.iit.edu",
-                        link: "mailto:vkolmako@hawk.iit.edu",
+                        text: "vkolmakov256@gmail.com",
+                        link: "mailto:vkolmakov256@gmail.com",
                         label: "Email address",
                     },
                     {
@@ -92,51 +114,63 @@ export default {
                     {
                         company: "Relativity",
                         city: "Chicago, IL",
-                        title: "Software Engineer",
-                        dates: "December 2017 - present",
-                        bulletpoints: [],
+                        positions: [
+                            {
+                                title: "Senior Software Engineer",
+                                dates: "November 2020 - present",
+                            },
+                            {
+                                title: "Advanced Software Engineer",
+                                dates: "May 2019 - November 2020",
+                            },
+                        ],
+                        bulletpoints: [
+                            "Design and develop an extensible cloud-based automation framework that connects and automates processes across the Relativity platform. (Back-end: Azure Functions, Event Grid, Logic Apps, .NET Core, Kubernetes. Front-end: TypeScript, Aurelia, RxJS-based state management)",
+                            "Help with onboarding for new team members by providing mentorship, leading training sessions and authoring development tools & onboarding documentation for several projects.",
+                        ],
+                    },
+                    {
+                        company: "Relativity",
+                        city: "Chicago, IL",
+                        positions: [
+                            {
+                                title: "Software Engineer",
+                                dates: "December 2017 - May 2019",
+                            },
+                        ],
+                        bulletpoints: [
+                            "Designed and developed features for internal developer-focused front-end frameworks and npm packages (ES6, TypeScript, AngularJS and Aurelia)",
+                            "Created reusable and accessible web components. (ES6, Preact)"
+                        ],
                     },
                     {
                         company: "Relativity (formerly kCura)",
                         city: "Chicago, IL",
-                        title: "Software Engineering Intern",
-                        dates: "June 2017 - December 2017",
+                        positions: [
+                            {
+                                title: "Software Engineering Intern",
+                                dates: "June 2017 - December 2017",
+                            },
+                        ],
                         bulletpoints: [
                             "Improved developer experience by adding incremental builds and fully automating build process for the web component library, which resulted in average raw time savings of 92% per build.",
                             "Made a contribution to Choices.js open-source library with library accessibility improvements.",
-                            "Contributed to multiple projects, including SkateJS-based web component library, Aurelia and AngularJS based applications.",
+                            "Contributed to multiple projects, including Preact-based web component library, Aurelia and AngularJS based applications.",
                         ],
                     },
                     {
                         company: "Target",
                         city: "Minneapolis, MN",
-                        title: "Software Engineering Intern",
-                        dates: "June 2016 - August 2016",
+                        positions: [
+                            {
+                                title: "Software Engineering Intern",
+                                dates: "June 2016 - August 2016",
+                            },
+                        ],
                         bulletpoints: [
                             "Worked with the Threat Detection Operations team at the Cyber Fusion Center on establishing Mac OSX forensics process.",
                             "Built an extensible Mac OSX forensics framework using multiple open-source tools.",
                             "Contributed to several internal projects.",
-                        ],
-                    },
-                    {
-                        company: "Illinois Institute of Technology",
-                        city: "Chicago, IL",
-                        title:
-                            "Teaching Assistant - Data Structures and Algorithms",
-                        dates: "August 2016 - May 2017",
-                        bulletpoints: [
-                            "Hosted lab sessions and assisted students with their programming assignments.",
-                            "Evaluated student lab assignments.",
-                        ],
-                    },
-                    {
-                        company: "Wilbur Wright College",
-                        city: "Chicago, IL",
-                        title: "Mathematics Tutor",
-                        dates: "May 2014 - May 2017",
-                        bulletpoints: [
-                            "Designed and developed a fully functional web-application that allows students to schedule tutoring appointments online.",
-                            "Provided academic assistance to assigned students with various mathematics courses (calculus, statistics), either individually or in groups.",
                         ],
                     },
                 ],
@@ -145,12 +179,14 @@ export default {
             technicalSkills: {
                 languages: [
                     "JavaScript/Node.js",
+                    "TypeScript",
                     "Python",
                     "Elm",
                     "Scala",
+                    "C#",
+                    "F#",
                     "Haskell",
                     "Java",
-                    "C#",
                     "C",
                 ],
                 technologies: [
@@ -163,17 +199,18 @@ export default {
                     ".NET",
                     "PostgreSQL",
                     "MongoDB",
+                    "redis",
                     "Elasticsearch",
                     "Kibana",
                     "ReactiveX",
                     "Webpack",
-                    "jspm",
+                    "Rollup",
                     "HTML5",
                     "CSS3",
                     "Sass",
                     "jQuery",
                 ],
-                tools: ["Git", "zsh", "IntelliJ", "Emacs"],
+                tools: ["Git", "Docker", "Kubernetes"],
             },
 
             projects: {
@@ -181,7 +218,7 @@ export default {
                     {
                         name: "Math Emporium",
                         bulletpoints: [
-                            'Self-service web application that allows students to log in using their school email address and schedule tutoring appointments directly at Math Emporium\'s calendar. Has complete integration with Google Calendar and serves as a configurable backend for the <a href="https://github.com/vkolmakov/academic-scheduler-extension">Academic Scheduler Chrome extension</a>.',
+                            "Self-service web application that allows students to log in using their school email address and schedule tutoring appointments directly at Math Emporium's calendar.",
                             "Backend: Node.js, Express, PostgreSQL, MongoDB. Frontend: React + Redux, Elm, Sass.",
                             'Source: <a href="https://github.com/vkolmakov/math-emporium">github.com/vkolmakov/math-emporium</a>. Link: <a href="https://tutoringatwright.com">tutoringatwright.com</a>.',
                         ],
@@ -213,7 +250,7 @@ export default {
 
     background: #fff;
     color: #333;
-    font-family: "Computer Modern Serif";
+    font-family: "Computer Modern Serif", serif;
 
     h1 {
         margin: 0.1em 0;
@@ -244,8 +281,8 @@ export default {
     .resume {
         font-size: 12px;
         border: 0;
-        padding: 8px 0 0 0;
         margin: 0 auto;
+        margin-top: -20px;
 
         color: #111;
         background-color: #fff;

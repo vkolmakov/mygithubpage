@@ -7,10 +7,14 @@
                     <em>{{ job.company }}</em
                     >, {{ job.city }}
                 </div>
-                <div class="title">
-                    <strong>{{ job.title }}</strong>
+                <div class="positions">
+                    <div class="position" v-for="position in job.positions">
+                        <div class="title">
+                            <strong>{{ position.title }}</strong>
+                        </div>
+                        <div class="dates">{{ position.dates }}</div>
+                    </div>
                 </div>
-                <div class="dates">{{ job.dates }}</div>
             </div>
             <ul>
                 <li v-for="bulletpoint in job.bulletpoints">
@@ -40,28 +44,24 @@ export default {
     @include bulletpoints();
 }
 
+.position {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+        flex: 1;
+    }
+}
+
 @include on-medium-screen-and-paper {
     .job > .info {
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column wrap;
     }
 
     .job > .info > .company-city {
-        order: 1;
         align-self: flex-start;
         width: 50%;
-    }
-
-    .job > .info > .title {
-        order: 3;
-        /* carefully selected voodoo constant that adds just enough */
-        /* space to the title so it has to wrap to the next row */
-        margin-right: 35%;
-    }
-
-    .job > .info > .dates {
-        margin-left: auto;
-        order: 2;
     }
 }
 </style>
