@@ -1,0 +1,39 @@
+@import "./constants.scss";
+
+@mixin breakpoint-medium-screen {
+	@media (min-width: $medium-screen-size) {
+		@content;
+	}
+}
+
+@mixin breakpoint-large-screen {
+	@media (min-width: $large-screen-size) {
+		@content;
+	}
+}
+
+@mixin on-medium-screen-and-paper {
+	@include breakpoint-medium-screen {
+		@content;
+	}
+
+	@media print {
+		@content;
+	}
+}
+
+@mixin bulletpoints {
+	margin: 0.5em 0;
+	padding-left: 2em;
+}
+
+@mixin visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
