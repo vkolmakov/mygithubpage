@@ -4,7 +4,7 @@
 
 		<h2>
 			<span>I</span>
-			<icon wrapper-class="icon-heart" kind="icon-heart"></icon>
+			<icon wrapper-class="heart" kind="icon-heart"></icon>
 			<span class="typed">{{ captionText }}</span>
 			<span class="cursor">_</span>
 		</h2>
@@ -106,13 +106,13 @@ export default {
 				{
 					link: "https://github.com/vkolmakov",
 					iconKind: "icon-github",
-					iconClass: "icon-github",
+					iconClass: "github",
 					title: "GitHub",
 				},
 				{
 					link: "https://www.linkedin.com/in/vkolmakov",
 					iconKind: "icon-linkedin",
-					iconClass: "icon-linkedin",
+					iconClass: "linkedin",
 					title: "LinkedIn",
 				},
 			],
@@ -286,6 +286,7 @@ export default {
 		margin: 1em 0;
 		text-align: center;
 		font-weight: 400;
+		white-space: nowrap;
 	}
 
 	h2 {
@@ -327,13 +328,13 @@ export default {
 		}
 	}
 
-	.icon-github {
+	.github {
 		fill: var(--github-color);
 	}
-	.icon-linkedin {
+	.linkedin {
 		fill: var(--linkedin-color);
 	}
-	.icon-heart {
+	.heart {
 		fill: $heart-color;
 		margin: 0 8px;
 	}
