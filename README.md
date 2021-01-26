@@ -1,4 +1,0 @@
-# vkolmakov.me
-
-> Personal website
-
